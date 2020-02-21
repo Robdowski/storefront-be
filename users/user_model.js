@@ -2,7 +2,7 @@ const db = require('../dbconfig')
 
 
 const getUsers = () => {
-    return db('users').select('username')
+    return db('users').select('username', 'id')
 }
 
 const getUserById = id => {
@@ -16,11 +16,13 @@ const addUser = async(user) => {
 }
 
 const deleteUser = id => {
-    return db('users').delete().where(id)
+    return db('users').delete().where({ id })
 }
 
-const updateUser = user => {
-    return db('users').update(user).where(user.id)
+const updateUser = async(user, id) => {
+    await db('users').update(user).where({ id })
+    
+    return getUserById(id)
 }
 
 

@@ -23,15 +23,11 @@ router.get('/:id', (req, res) => {
 
 //ADD USER
 router.post('/', (req, res) => {
-    const { username, password, email } = req.body
+    let { username, password, email } = req.body
 
-    bcrypt.hash(password, 10).then(hash => {
-        password = hash
-    })
-    .catch(err => {
-        console.log(err)
-        res.status(500).json({"Error": "There was a problem with saving your password. Please try again."})
-    })
+    const hash = bcrypt.hashSync(password, 10)
+
+    password = hash
 
     Users.addUser({username, password, email}).then(user => {
         res.status(201).json(user)
@@ -45,7 +41,7 @@ router.post('/', (req, res) => {
 // DELETE USER
 router.delete('/:id', (req, res) => {
     const { id } = req.params
-    Users.deleteUser(id).then(res => {
+    Users.deleteUser(Number(id)).then(message => {
         res.status(200).json({"Message": "Your account has been deleted. Thank you."})
     })
     .catch(err => {
@@ -57,7 +53,8 @@ router.delete('/:id', (req, res) => {
 //UPDATE USER
 router.put('/:id', (req, res) => {
     const user = req.body
-    Users.updateUser(user).then(user => {
+    const { id } = req.params
+    Users.updateUser(user, id).then(user => {
         res.status(201).json(user)
     })
     .catch(err => {
