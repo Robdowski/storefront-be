@@ -6,11 +6,13 @@ const getUsers = () => {
 }
 
 const getUserById = id => {
-    return db('users').where(id)
+    return db('users').where({ id }).first()
 }
 
-const addUser = user => {
-    return db('users').insert(user)
+const addUser = async(user) => {
+   const [id] = await db('users').insert(user)
+
+   return getUserById(id)
 }
 
 const deleteUser = id => {
@@ -20,3 +22,6 @@ const deleteUser = id => {
 const updateUser = user => {
     return db('users').update(user).where(user.id)
 }
+
+
+module.exports = { getUsers, getUserById, addUser, deleteUser, updateUser }
