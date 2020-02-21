@@ -13,4 +13,7 @@ server.use(express.json())
 const userRouter = require('./users/user_router')
 server.use('/users', userRouter)
 
+const itemRouter = require('./items/items_router')
+server.use('/items', itemRouter)
+
 module.exports =  server 

@@ -11,7 +11,7 @@ const getItemById = id => {
 const addItem = async item => {
     const [id] = await db('items').insert(item)
 
-    return db.getItemById(id)
+    return getItemById(id)
 }
 
 const deleteItem = id => {
@@ -21,7 +21,7 @@ const deleteItem = id => {
 const updateItem = async(item, id) => {
     await db('items').where({ id }).update(item)
 
-    return db.getItemById(id)
+    return getItemById(id)
 }
 
 module.exports = { getItems, getItemById, addItem, deleteItem, updateItem }

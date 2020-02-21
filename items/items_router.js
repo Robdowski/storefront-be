@@ -55,3 +55,5 @@ router.put('/:id', (req, res) => {
         res.status(500).json({"Error": "There was an error updating that item."})
     })
 })
+
+module.exports = router
