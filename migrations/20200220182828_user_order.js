@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    knex.schema.createTable('user_order', tbl => {
+    return knex.schema.createTable('user_order', tbl => {
         tbl.increments()
         tbl.integer('user_id').references('id').inTable('user')
     })

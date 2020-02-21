@@ -1,8 +1,8 @@
-const db = require('./dbconfig')
+const db = require('../dbconfig')
 
 
 const getUsers = () => {
-    return db('users')
+    return db('users').select('username')
 }
 
 const getUserById = id => {

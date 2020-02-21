@@ -9,4 +9,8 @@ server.use(helmet())
 server.use(cors())
 server.use(express.json())
 
+
+const userRouter = require('./users/user_router')
+server.use('/users', userRouter)
+
 module.exports =  server 
