@@ -5,7 +5,7 @@ exports.up = function(knex) {
         tbl.string('name', 255).notNullable().unique()
         tbl.string('description', 255).notNullable()
         tbl.decimal('price', 2, 10).notNullable()
-        tbl.string('img_url', 255).notNullable()
+        tbl.string('img_url').notNullable()
         tbl.integer('stock').notNullable().defaultTo(50)
         tbl.string('category', 64).notNullable()
         tbl.string('keywords', 255).notNullable()
