@@ -4,6 +4,7 @@ exports.up = function(knex) {
         tbl.increments()
         tbl.integer('item_id').references('id').inTable('items')
         tbl.integer('user_id').references('id').inTable('users')
+        tbl.integer('quantity').notNullable().defaultTo(1)
     })
 };
 
