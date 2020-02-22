@@ -16,4 +16,7 @@ server.use('/users', userRouter)
 const itemRouter = require('./items/items_router')
 server.use('/items', itemRouter)
 
+const cartRouter = require('./cart/cart_router')
+server.use('/cart', cartRouter)
+
 module.exports =  server 

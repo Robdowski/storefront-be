@@ -14,7 +14,7 @@ router.get('/:user_id', (req, res) => {
     })
 })
 
-router.get('/:user_id/:item_id', (req, res) => {
+router.get('/item/:item_id', (req, res) => {
 
     const { item_id } = req.params
 
@@ -45,7 +45,7 @@ router.delete('/:id', (req, res) => {
     const { id } = req.params
 
     Cart.removeCartItem(id).then(deleted => {
-        res.status(200).json({"Message": "The item has been successfully deleted."})
+        res.status(200).json(deleted)
     })
     .catch(err => {
         console.log(err)
@@ -53,7 +53,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.update(':/id', (req, res) => {
+router.put(':/id', (req, res) => {
 
     const item = req.body
     Cart.updateCartItem(item).then(cart => {
@@ -64,3 +64,5 @@ router.update(':/id', (req, res) => {
         res.status(500).json({"Error": "There was a problem updating the item in your cart."})
     })
 })
+
+module.exports = router
