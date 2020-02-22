@@ -53,11 +53,11 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.put(':/id', (req, res) => {
-
+router.put('/:id', (req, res) => {
     const item = req.body
+
     Cart.updateCartItem(item).then(cart => {
-        res.status(202).json(cart)
+        res.status(201).json(cart)
     })
     .catch(err => {
         console.log(err)

@@ -25,7 +25,13 @@ const removeCartItem = async id => {
 const updateCartItem = async(item) => {
     const { id } = item
 
-    await db('user_cart_items').where({ id }).update(item)
+    if (item.quantity === 0){ // If quantity is 0, delete item instead of updating.
+        await removeCartItem(item.id)
+    } else {
+        await db('user_cart_items').where({ id }).update(item)
+    }
+
+   
 
     return getCartItems(item.user_id)
 }
