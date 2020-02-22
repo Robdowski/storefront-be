@@ -19,4 +19,7 @@ server.use('/items', itemRouter)
 const cartRouter = require('./cart/cart_router')
 server.use('/cart', cartRouter)
 
+const orderRouter = require('./orders/orders_router')
+server.use('/orders', orderRouter)
+
 module.exports =  server 
