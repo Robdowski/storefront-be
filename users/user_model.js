@@ -10,7 +10,7 @@ const getUserById = id => {
 }
 
 const addUser = async(user) => {
-   const [id] = await db('users').insert(user)
+   const [id] = await db('users').insert(user, 'id')
 
    return getUserById(id)
 }

@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Order = require('./orders_model')
 
-router.get('/users/:user_id', (req, res) => {
+router.get('/users/:id', (req, res) => {
     const { id } = req.params
 
     Order.getUserOrders(id).then(orders => {
@@ -13,7 +13,7 @@ router.get('/users/:user_id', (req, res) => {
     })
 })
 
-router.get('/:order_id', (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params
 
     Order.getSpecificOrder(id).then(order => {
@@ -25,7 +25,7 @@ router.get('/:order_id', (req, res) => {
     })
 })
 
-router.delete('/:order_id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const { id } = req.params
 
     Order.cancelOrder(id).then(message => {

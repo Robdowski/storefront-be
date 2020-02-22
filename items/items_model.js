@@ -9,7 +9,7 @@ const getItemById = id => {
 }
 
 const addItem = async item => {
-    const [id] = await db('items').insert(item)
+    const [id] = await db('items').insert(item, 'id')
 
     return getItemById(id)
 }
