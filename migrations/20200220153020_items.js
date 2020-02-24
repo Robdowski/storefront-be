@@ -4,7 +4,7 @@ exports.up = function(knex) {
         tbl.increments()
         tbl.string('name', 255).notNullable().unique()
         tbl.string('description', 255).notNullable()
-        tbl.decimal('price', 2).notNullable()
+        tbl.decimal('price', 2, 2).notNullable()
         tbl.string('img_url').notNullable()
         tbl.integer('stock').notNullable().defaultTo(50)
         tbl.string('category', 64).notNullable()
